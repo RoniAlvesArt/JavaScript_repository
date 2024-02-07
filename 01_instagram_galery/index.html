@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Video Grid</title>
+    <style>
+        body{
+            background: black;
+            padding: 20px;
+        }
+        div{
+            margin: 0px;
+            padding: 0px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+/*        div{
+            display:flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: left;
+            align-self: flex-end;
+        }*/
+    </style>
+</head>
+<body>
+
+<div id="instagramGrid"></div>
+
+<script>
+    // Função para carregar dados do arquivo JSON
+    async function loadVideoURLs() {
+        try {
+            const response = await fetch('./videos.json'); // Substitua 'videos.json' pelo caminho do seu arquivo JSON
+            const data = await response.json();
+            return data.videoURLs;
+        } catch (error) {
+            console.error('Erro ao carregar dados:', error);
+            return [];
+        }
+    }
+
+    // Função para gerar códigos de incorporação para as URLs de vídeo
+    async function generateEmbedCodes() {
+        const videoURLs = await loadVideoURLs();
+
+        //Embaralhando os vídeos
+        const shuffledVideoURLs = videoURLs.sort(() => Math.random() - 0.5);
+
+        const embedCodes = videoURLs.map(url => {
+            const postCode = url.split('/reel/')[1].split('/')[0];
+            return `<blockquote class="instagram-media" data-instgrm-permalink="${url}?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="13"></blockquote>`;
+        });
+        return embedCodes.join('');
+    }
+
+    // Função para exibir os códigos de incorporação na página
+    async function displayEmbedCodes() {
+        const embedCodes = await generateEmbedCodes();
+        document.getElementById('instagramGrid').innerHTML = embedCodes;
+
+        // Carregue a plataforma de incorporação do Instagram
+        const script = document.createElement('script');
+        script.src = "https://www.instagram.com/embed.js";
+        script.defer = true;
+        document.body.appendChild(script);
+    }
+
+    // Inicie o processo de exibição
+    displayEmbedCodes();
+</script>
+
+</body>
+</html>

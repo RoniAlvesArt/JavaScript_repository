@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Questões</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display:flex;
+            height: 100vh;
+            max-height: 100%;
+            justify-content: center;
+            align-items: center;
+            }
+    </style>
+</head>
+<body>
+<div>
+<h1>Introdução da Questão</h1>
+<p>Esta é a introdução da questão. Leia atentamente antes de responder.</p>
+
+<label for="codigo">Digite o código da questão:</label>
+<input type="text" id="codigo" placeholder="Insira o código da questão">
+<button onclick="verificarCodigo()">Verificar Código</button>
+
+<div id="resultado">
+    <code>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+         <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+        </head>
+        <body>
+    
+        </body>
+        </html>
+    </code>
+
+</div>
+
+<script>
+    function verificarCodigo() {
+        // Obter o valor do input de código
+        var codigoInserido = document.getElementById("codigo").value;
+
+        // Verificar se o código está correto
+        if (codigoInserido === "codigo_correto") {
+            document.getElementById("resultado").innerHTML = "<p>Código correto! Aqui está o código da questão:</p><pre>// Seu código da questão aqui</pre>";
+        } else {
+            document.getElementById("resultado").innerHTML = "<p>Código incorreto. Tente novamente.</p>";
+        }
+    }
+</script>
+</div>
+
+</body>
+</html>

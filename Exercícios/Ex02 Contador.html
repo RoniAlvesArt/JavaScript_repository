@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Contagem</h1>
+    <button onclick="cliquei()"> Conta +1 </button>
+    <script>
+        //Parte um para o exercício
+        let contagem = 0;
+        function cliquei(){
+            contagem++;
+            document.querySelector('h1').innerHTML = contagem;
+            //Parte 2 para o exercício
+            if(contagem %10 === 0){
+                alert(`A contagem agora é ${contagem}`)
+            }
+        }
+    </script>
+</body>
+</html>
