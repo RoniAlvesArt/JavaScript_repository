@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exemplo getElementsByTagName</title>
+</head>
+<body>
+    <p>Parágrafo 1</p>
+    <p>Parágrafo 2</p>
+    <p>Parágrafo 3</p>
+    <button onclick="alterar()">ALTERE</button>
+    <br>
+    <h1>0</h1>
+    <script>
+        var paragrafos = document.getElementsByTagName("p");
+        var cliques = 0;
+        function alterar(){
+            if(cliques%2==0){
+                for(let i = 0; i < paragrafos.length; i++){
+                paragrafos[i].textContent = "ALTERAÇÃO " + (i+1);
+                }
+            }else{
+                for(let i = 0; i < paragrafos.length; i++){
+                paragrafos[i].textContent = "Parágrafo " + (i+1);
+                }
+            }
+            cliques++;
+            document.getElementsByTagName("h1")[0].innerHTML = cliques.toString();
+        }
+    </script>
+</body>
+</html>

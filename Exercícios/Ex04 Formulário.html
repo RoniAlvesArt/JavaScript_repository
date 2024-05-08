@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Captura de Nome</title>
+</head>
+<body>
+<form>
+    <label for="nome">Digite seu nome:</label><br><br>
+    <input type="text" id="nome" name="nome"><br><br>
+    <button onclick="capturarNome()">Capturar Nome</button>
+    <p id="nomeIndicado">...</p>
+</form>
+
+<script>
+function capturarNome() {
+  let nome = document.getElementById("nome").value;
+  console.log("O nome capturado é: ", nome);
+    document.getElementById("nomeIndicado").innerHTML = ("O nome capturado é: "+nome);
+}
+</script>
+</body>
+</html>
